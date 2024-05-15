@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './list.css';
 
 const FeedbackList = () => {
   const [feedbackData, setFeedbackData] = useState([]);
@@ -16,8 +17,11 @@ const FeedbackList = () => {
   };
 
   return (
-    <div>
-      <h2>Aromatic Bar</h2>
+    <div className="feedback-list">
+      <div className="header">
+        <h2>Aromatic Bar</h2>
+        <button>Add New</button>
+      </div>
       <p>
         {feedbackData.length} record{feedbackData.length !== 1 && 's'} found.{' '}
         {feedbackData.length > 0 && feedbackData.length === 12 && '(Filters applied)'}
@@ -44,9 +48,11 @@ const FeedbackList = () => {
               <td>{feedback.serviceQuality}</td>
               <td>{feedback.cleanliness}</td>
               <td>{feedback.beverageQuality}</td>
-              <td>{feedback.overallExperience}</td>
+              <td>{feedback.diningExperience}</td>
               <td>
-                <button onClick={() => handleDelete(index)}>Delete</button>
+                <button className="delete-btn" onClick={() => handleDelete(index)}>
+                  Delete
+                </button>
               </td>
             </tr>
           ))}

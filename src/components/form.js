@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './form.css'
 
 const FeedbackForm = () => {
   const [formData, setFormData] = useState({
@@ -77,223 +78,230 @@ const FeedbackForm = () => {
   };
 
   return (
-    <div>
-      <h2>Aromatic Bar</h2>
-      <p>
-        We are committed to providing you with the best dining experience possible, so we welcome your comments. Please fill
-        out this questionnaire. Thank you.
-      </p>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="customerName">Customer Name:</label>
-          <input
-            type="text"
-            id="customerName"
-            name="customerName"
-            value={formData.customerName}
-            onChange={handleChange}
-          />
-          {formErrors.customerName && <span>{formErrors.customerName}</span>}
-        </div>
-        <div>
-          <label htmlFor="email">Email:</label>
-          <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} />
-          {formErrors.email && <span>{formErrors.email}</span>}
-        </div>
-        <div>
-          <label htmlFor="phone">Phone:</label>
-          <input type="tel" id="phone" name="phone" value={formData.phone} onChange={handleChange} />
-          {formErrors.phone && <span>{formErrors.phone}</span>}
-        </div>
-        <div>
+    <div className="container">
+      <div className="feedback-form">
+        <h2>Feedback Form</h2>
+        <p>
+          We are committed to providing you with the best dining experience possible, so we welcome your comments. Please fill
+          out this questionnaire. Thank you.
+        </p>
+        <form onSubmit={handleSubmit}>
           <div>
-            <label>Please rate the quality of the service you recieved from the host</label>
-            <div>
-              <label>
-                <input
-                  type="radio"
-                  name="serviceQuality"
-                  value="Excellent"
-                  checked={formData.serviceQuality === 'Excellent'}
-                  onChange={(e) => handleRadioChange(e, 'serviceQuality')}
-                />
-                Excellent
-              </label>
-              <label>
-                <input
-                  type="radio"
-                  name="serviceQuality"
-                  value="Good"
-                  checked={formData.serviceQuality === 'Good'}
-                  onChange={(e) => handleRadioChange(e, 'serviceQuality')}
-                />
-                Good
-              </label>
-              <label>
-                <input
-                  type="radio"
-                  name="serviceQuality"
-                  value="Fair"
-                  checked={formData.serviceQuality === 'Fair'}
-                  onChange={(e) => handleRadioChange(e, 'serviceQuality')}
-                />
-                Fair
-              </label>
-              <label>
-                <input
-                  type="radio"
-                  name="serviceQuality"
-                  value="Bad"
-                  checked={formData.serviceQuality === 'Bad'}
-                  onChange={(e) => handleRadioChange(e, 'serviceQuality')}
-                />
-                Bad
-              </label>
-            </div>
-            {formErrors.serviceQuality && <span>{formErrors.serviceQuality}</span>}
+            <label htmlFor="customerName">Customer Name:</label>
+            <input
+              type="text"
+              id="customerName"
+              name="customerName"
+              value={formData.customerName}
+              onChange={handleChange}
+            />
+            {formErrors.customerName && <span className="error">{formErrors.customerName}</span>}
           </div>
           <div>
-            <label>Cleanliness</label>
-            <div>
-              <label>
-                <input
-                  type="radio"
-                  name="cleanliness"
-                  value="Excellent"
-                  checked={formData.cleanliness === 'Excellent'}
-                  onChange={(e) => handleRadioChange(e, 'cleanliness')}
-                />
-                Excellent
-              </label>
-              <label>
-                <input
-                  type="radio"
-                  name="cleanliness"
-                  value="Good"
-                  checked={formData.cleanliness === 'Good'}
-                  onChange={(e) => handleRadioChange(e, 'cleanliness')}
-                />
-                Good
-              </label>
-              <label>
-                <input
-                  type="radio"
-                  name="cleanliness"
-                  value="Fair"
-                  checked={formData.cleanliness === 'Fair'}
-                  onChange={(e) => handleRadioChange(e, 'cleanliness')}
-                />
-                Fair
-              </label>
-              <label>
-                <input
-                  type="radio"
-                  name="cleanliness"
-                  value="Bad"
-                  checked={formData.cleanliness === 'Bad'}
-                  onChange={(e) => handleRadioChange(e, 'cleanliness')}
-                />
-                Bad
-              </label>
-            </div>
-            {formErrors.cleanliness && <span>{formErrors.cleanliness}</span>}
+            <label htmlFor="email">Email:</label>
+            <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} />
+            {formErrors.email && <span className="error">{formErrors.email}</span>}
           </div>
           <div>
-            <label>beverageQuality</label>
-            <div>
-              <label>
-                <input
-                  type="radio"
-                  name="beverageQuality"
-                  value="Excellent"
-                  checked={formData.beverageQuality === 'Excellent'}
-                  onChange={(e) => handleRadioChange(e, 'beverageQuality')}
-                />
-                Excellent
-              </label>
-              <label>
-                <input
-                  type="radio"
-                  name="beverageQuality"
-                  value="Good"
-                  checked={formData.beverageQuality === 'Good'}
-                  onChange={(e) => handleRadioChange(e, 'beverageQuality')}
-                />
-                Good
-              </label>
-              <label>
-                <input
-                  type="radio"
-                  name="beverageQuality"
-                  value="Fair"
-                  checked={formData.beverageQuality === 'Fair'}
-                  onChange={(e) => handleRadioChange(e, 'beverageQuality')}
-                />
-                Fair
-              </label>
-              <label>
-                <input
-                  type="radio"
-                  name="beverageQuality"
-                  value="Bad"
-                  checked={formData.beverageQuality === 'Bad'}
-                  onChange={(e) => handleRadioChange(e, 'beverageQuality')}
-                />
-                Bad
-              </label>
-            </div>
-            {formErrors.beverageQuality && <span>{formErrors.beverageQuality}</span>}
+            <label htmlFor="phone">Phone:</label>
+            <input type="tel" id="phone" name="phone" value={formData.phone} onChange={handleChange} />
+            {formErrors.phone && <span className="error">{formErrors.phone}</span>}
           </div>
-          <div>
-            <label>overallExperience</label>
+          <div className="radio-group">
             <div>
-              <label>
-                <input
-                  type="radio"
-                  name="overallExperience"
-                  value="Excellent"
-                  checked={formData.overallExperience === 'Excellent'}
-                  onChange={(e) => handleRadioChange(e, 'overallExperience')}
-                />
-                Excellent
-              </label>
-              <label>
-                <input
-                  type="radio"
-                  name="overallExperience"
-                  value="Good"
-                  checked={formData.overallExperience === 'Good'}
-                  onChange={(e) => handleRadioChange(e, 'overallExperience')}
-                />
-                Good
-              </label>
-              <label>
-                <input
-                  type="radio"
-                  name="overallExperience"
-                  value="Fair"
-                  checked={formData.overallExperience === 'Fair'}
-                  onChange={(e) => handleRadioChange(e, 'overallExperience')}
-                />
-                Fair
-              </label>
-              <label>
-                <input
-                  type="radio"
-                  name="overallExperience"
-                  value="Bad"
-                  checked={formData.overallExperience === 'Bad'}
-                  onChange={(e) => handleRadioChange(e, 'overallExperience')}
-                />
-                Bad
-              </label>
+              <label>Please rate the quality of the service you received from the host</label>
+              <div>
+                <label>
+                  <input
+                    type="radio"
+                    name="serviceQuality"
+                    value="Excellent"
+                    checked={formData.serviceQuality === 'Excellent'}
+                    onChange={(e) => handleRadioChange(e, 'serviceQuality')}
+                  />
+                  Excellent
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    name="serviceQuality"
+                    value="Good"
+                    checked={formData.serviceQuality === 'Good'}
+                    onChange={(e) => handleRadioChange(e, 'serviceQuality')}
+                  />
+                  Good
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    name="serviceQuality"
+                    value="Fair"
+                    checked={formData.serviceQuality === 'Fair'}
+                    onChange={(e) => handleRadioChange(e, 'serviceQuality')}
+                  />
+                  Fair
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    name="serviceQuality"
+                    value="Bad"
+                    checked={formData.serviceQuality === 'Bad'}
+                    onChange={(e) => handleRadioChange(e, 'serviceQuality')}
+                  />
+                  Bad
+                </label>
+              </div>
+              {formErrors.serviceQuality && <span className="error">{formErrors.serviceQuality}</span>}
             </div>
-            {formErrors.overallExperience && <span>{formErrors.overallExperience}</span>}
           </div>
-        </div>
-        {/* Repeat the radio button group for other questions */}
-        <button type="submit">Submit Review</button>
-      </form>
+          <div className="radio-group">
+            <div>
+              <label>Was our restaurant clean?</label>
+              <div>
+                <label>
+                  <input
+                    type="radio"
+                    name="cleanliness"
+                    value="Excellent"
+                    checked={formData.cleanliness === 'Excellent'}
+                    onChange={(e) => handleRadioChange(e, 'cleanliness')}
+                  />
+                  Excellent
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    name="cleanliness"
+                    value="Good"
+                    checked={formData.cleanliness === 'Good'}
+                    onChange={(e) => handleRadioChange(e, 'cleanliness')}
+                  />
+                  Good
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    name="cleanliness"
+                    value="Fair"
+                    checked={formData.cleanliness === 'Fair'}
+                    onChange={(e) => handleRadioChange(e, 'cleanliness')}
+                  />
+                  Fair
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    name="cleanliness"
+                    value="Bad"
+                    checked={formData.cleanliness === 'Bad'}
+                    onChange={(e) => handleRadioChange(e, 'cleanliness')}
+                  />
+                  Bad
+                </label>
+              </div>
+              {formErrors.cleanliness && <span className="error">{formErrors.cleanliness}</span>}
+            </div>
+          </div>
+          <div className="radio-group">
+            <div>
+              <label>Please rate the quality of your beverage.</label>
+              <div>
+                <label>
+                  <input
+                    type="radio"
+                    name="beverageQuality"
+                    value="Excellent"
+                    checked={formData.beverageQuality === 'Excellent'}
+                    onChange={(e) => handleRadioChange(e, 'beverageQuality')}
+                  />
+                  Excellent
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    name="beverageQuality"
+                    value="Good"
+                    checked={formData.beverageQuality === 'Good'}
+                    onChange={(e) => handleRadioChange(e, 'beverageQuality')}
+                  />
+                  Good
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    name="beverageQuality"
+                    value="Fair"
+                    checked={formData.beverageQuality === 'Fair'}
+                    onChange={(e) => handleRadioChange(e, 'beverageQuality')}
+                  />
+                  Fair
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    name="beverageQuality"
+                    value="Bad"
+                    checked={formData.beverageQuality === 'Bad'}
+                    onChange={(e) => handleRadioChange(e, 'beverageQuality')}
+                  />
+                  Bad
+                </label>
+              </div>
+              {formErrors.beverageQuality && <span className="error">{formErrors.beverageQuality}</span>}
+            </div>
+          </div>
+          <div className="radio-group">
+            <div>
+              <label>Please rate your overall dining experience</label>
+              <div>
+                <label>
+                  <input
+                    type="radio"
+                    name="diningExperience"
+                    value="Excellent"
+                    checked={formData.diningExperience === 'Excellent'}
+                    onChange={(e) => handleRadioChange(e, 'diningExperience')}
+                  />
+                  Excellent
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    name="diningExperience"
+                    value="Good"
+                    checked={formData.diningExperience === 'Good'}
+                    onChange={(e) => handleRadioChange(e, 'diningExperience')}
+                  />
+                  Good
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    name="diningExperience"
+                    value="Fair"
+                    checked={formData.diningExperience === 'Fair'}
+                    onChange={(e) => handleRadioChange(e, 'diningExperience')}
+                  />
+                  Fair
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    name="diningExperience"
+                    value="Bad"
+                    checked={formData.diningExperience === 'Bad'}
+                    onChange={(e) => handleRadioChange(e, 'diningExperience')}
+                  />
+                  Bad
+                </label>
+              </div>
+              {formErrors.diningExperience && <span className="error">{formErrors.diningExperience}</span>}
+            </div>
+          </div>
+          <button type="submit">Submit Review</button>
+        </form>
+      </div>
     </div>
   );
 };
