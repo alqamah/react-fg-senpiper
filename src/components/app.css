@@ -1,0 +1,45 @@
+body{
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-width: 750px;
+}
+.feedback-header{
+  height: 150px;
+}
+.feedback-header .header{
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+}
+.feedback-header .header h1{
+  font-family: "Licorice", cursive;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 50px;
+  margin-left: 10%;
+}
+.feedback-header .header img{
+  height: 100px;
+  width: 100px;
+  margin-left: 25px;
+  border-radius: 25%;
+}
+.tabs {
+  margin-top: -100px;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.tabs button{
+  background-color: #f2f2f2;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin-right: 10px;
+  cursor: pointer;
+}

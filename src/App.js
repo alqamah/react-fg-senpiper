@@ -1,31 +1,37 @@
 import React, { useState } from "react";
-import FeedbackHeader from "./components/header.js";
 import FeedbackForm from "./components/form.js";
 import FeedbackList from "./components/list.js";
+import logo from "./assets/logo.png"
+import "./components/app.css";
 
 function App() {
   const [activeTab, setActiveTab] = useState("FeedbackForm");
-
+  
   const renderTab = () => {
     switch (activeTab) {
       case "FeedbackForm":
-        return <FeedbackForm />;
+      return <FeedbackForm />;
       case "FeedbackList":
-        return <FeedbackList />;
+      return <FeedbackList />;
       default:
-        return null;
+      return null;
     }
   };
-
+  
   return (
     <>
-      <FeedbackHeader />
-      <div>
+      <div className="feedback-header">
+        <div className="header">
+          <img src={logo} alt="logo" />
+          <h1>Aromatic Bar</h1>
+        </div>
+      </div>
+      <div className="tabs">
         <button onClick={() => setActiveTab("FeedbackForm")}>
-          FeedbackForm
+          Feedback Form
         </button>
         <button onClick={() => setActiveTab("FeedbackList")}>
-          FeedbackList
+          Feedback List
         </button>
       </div>
       {renderTab()}
