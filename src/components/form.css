@@ -75,7 +75,9 @@ body {
   box-sizing: border-box;
   margin-bottom: 10px;
 }
-
+.label-mandatory{
+  color: red;
+}
 .feedback-form .rating-group{
   display: flex;
   flex-wrap: wrap;

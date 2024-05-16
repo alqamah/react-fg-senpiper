@@ -14,7 +14,7 @@ body {
 
 .feedback-list .header {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   background: linear-gradient(white,#f7e1c24b);
   padding: 10px;
@@ -28,20 +28,32 @@ body {
   border-radius: 15px;
   font-family: "Arvo", serif; 
   font-weight: 400;
-  margin-left: 20px;  
+  margin-left: 25px;
+  margin-right: auto;  
 }
 
-.feedback-list .header button {
-  background-color: #4caf50;
-  color: white;
+.header-search input{
+  margin: 20px;
+  padding: 10px;
+  font-family:"Arvo", serif ;
+  border: solid 2px rgba(128, 128, 128, 0.545);
+  border-radius: 10px;
+}
+.header-refresh{
+  background-color: rgba(255, 255, 255, 0);
   border: none;
-  padding: 8px 16px;
-  border-radius: 4px;
   cursor: pointer;
+  border-radius: 50%;
 }
-
-.feedback-list .header button:hover {
-  background-color: #45a049;
+.header-refresh img{
+  background-color: rgba(255, 255, 255, 0);
+  height: 29px;
+  width: 29px;
+  border: none;
+  transition: .2s;
+}
+.header-refresh img:active{
+  transform: scale(1.1) rotate(10deg);
 }
 
 .feedback-list p{
@@ -76,15 +88,19 @@ body {
   background-color: #e6e6e6;
 }
 
-.feedback-list td button {
-  background-color: #f44336;
+.delete-btn {
+  background-color: #df463b;
   color: white;
   border: none;
   padding: 5px 10px;
   border-radius: 4px;
   cursor: pointer;
+  opacity: 75%;
 }
-
-.feedback-list td button:hover {
-  background-color: #d32f2f;
+.delete-btn:disabled{
+  background-color: grey;
+  cursor: not-allowed;
+}
+.delete-btn:hover{
+  opacity: 100%;
 }

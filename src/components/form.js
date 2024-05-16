@@ -7,6 +7,7 @@ import PhoneInput, {isValidPhoneNumber} from 'react-phone-number-input'
 
 
 const FeedbackForm = () => {
+  //creating states and initial values
   const [formData, setFormData] = useState({
     customerName: '',
     email: '',
@@ -19,6 +20,7 @@ const FeedbackForm = () => {
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
   const [formErrors, setFormErrors] = useState({});
 
+  //adding the data to state with form-data
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -26,7 +28,7 @@ const FeedbackForm = () => {
       [name]: value,
     }));
   };
-
+  //adding the data to state with radio-buttons
   const handleRadioChange = (e, name) => {
     setFormData((prevData) => ({
       ...prevData,
@@ -34,6 +36,7 @@ const FeedbackForm = () => {
     }));
   };
 
+  //performing the validations
   const validateForm = () => {
     let errors = {};
 
@@ -44,7 +47,7 @@ const FeedbackForm = () => {
     if (!formData.phone) errors.phone = 'Phone number is required';
     else if (!isValidPhoneNumber(formData.phone)) errors.phone = 'Invalid phone number';
 
-    // Validate Radio buttons
+    // // Validate Radio buttons
     if (formData.serviceQuality === null) errors.serviceQuality = 'Please rate the service quality';
     if (formData.beverageQuality === null) errors.beverageQuality = 'Please rate the beverage quality';
     if (formData.cleanliness === null) errors.cleanliness = 'Please rate the cleanliness';
@@ -53,6 +56,7 @@ const FeedbackForm = () => {
     return errors;
   };
 
+  //submitting the form
   const handleSubmit = (e) => {
     e.preventDefault();
     const errors = validateForm();
@@ -61,27 +65,19 @@ const FeedbackForm = () => {
       const feedback = JSON.parse(localStorage.getItem('feedback') || '[]');
       feedback.push(formData);
       localStorage.setItem('feedback', JSON.stringify(feedback));
-      console.log(feedback);
+      //console.log(feedback);
       setIsFormSubmitted(true);
     } else {
       setFormErrors(errors);
     }
   };
+  //reloading the page after the animation
   const handleAnimationComplete = () => {
     setTimeout(() => {
-      // setFormData({
-      //   customerName: '',
-      //   email: '',
-      //   phone: '',
-      //   serviceQuality: null,
-      //   beverageQuality: null,
-      //   cleanliness: null,
-      //   diningExperience: null,
-      // });
-      // setIsFormSubmitted(false);
       window.location.reload();
     }, 5000);
   };
+  //animation options
   const defaultOptions = {
     loop: true,
     autoplay: true,
@@ -98,18 +94,18 @@ const FeedbackForm = () => {
           height={400}
           width={400}
         />
-        <h1 className='success-submit-header'>Thanks {formData.customerName}! for your valuable feedback &#10084;</h1>
+        <h1 className='success-submit-header'>Thank you, {formData.customerName} for completing the information &#10084;</h1>
         {handleAnimationComplete()}
         </>
       ):
       <div className="feedback-form">
         <h2>Feedback Form</h2>
         <p>
-         Please fill this form, to help us serve you better.
+        We are committed to providing you with the best dining experience possible, so we welcome your comments. Please fill out this questionnaire. Thank you.
         </p>
         <form onSubmit={handleSubmit}>
           <div className='form-group form-group-name'>
-            <label className='form-label-title' htmlFor="customerName">Customer Name:</label>
+            <label className='form-label-title' htmlFor="customerName">Customer Name<span className='label-mandatory' >*</span></label>
             <input
               type="text"
               id="customerName"
@@ -121,12 +117,12 @@ const FeedbackForm = () => {
           </div>
           <div className='email-phone'>
             <div className='form-group form-group-email'>
-              <label className='form-label-title' htmlFor="email">Email:</label>
+              <label className='form-label-title' htmlFor="email">Email<span className='label-mandatory' >*</span></label>
               <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} />
               {formErrors.email && <span className="error">{formErrors.email}</span>}
             </div>
             <div className='form-group form-group-phone'>
-              <label className='form-label-title' htmlFor="phone">Phone:</label>
+              <label className='form-label-title' htmlFor="phone">Phone<span className='label-mandatory' >*</span></label>
               <PhoneInput
                 type="tel" id="phone" name="phone"
                 defaultCountry="IN"
@@ -140,7 +136,7 @@ const FeedbackForm = () => {
           <div className='form-group rating-group'>
             <div className="radio-group service-quality">
               <div>
-                <label className='form-label-title'>Please rate the quality of the service you received from the host</label>
+                <label className='form-label-title'>Please rate the quality of the service you received from the host<span className='label-mandatory' >*</span></label>
                 <div className='rating-options'>
                   <label>
                     <input
@@ -188,7 +184,7 @@ const FeedbackForm = () => {
             </div>
             <div className="radio-group cleanliness">
               <div>
-                <label className='form-label-title'>Was our restaurant clean?</label>
+                <label className='form-label-title'>Was our restaurant clean?<span className='label-mandatory' >*</span></label>
                 <div className='rating-options'>
                   <label>
                     <input
@@ -236,7 +232,7 @@ const FeedbackForm = () => {
             </div>
             <div className="radio-group beverage-quality">
               <div>
-                <label className='form-label-title'>Please rate the quality of your beverage.</label>
+                <label className='form-label-title'>Please rate the quality of your beverage.<span className='label-mandatory' >*</span></label>
                 <div className='rating-options'>
                   <label>
                     <input
@@ -284,7 +280,7 @@ const FeedbackForm = () => {
             </div>
             <div className="radio-group overall-experience">
               <div>
-                <label className='form-label-title'>Please rate your overall dining experience</label>
+                <label className='form-label-title'>Please rate your overall dining experience<span className='label-mandatory' >*</span></label>
                 <div className='rating-options'>
                   <label>
                     <input
