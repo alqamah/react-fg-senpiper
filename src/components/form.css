@@ -133,3 +133,29 @@ body {
   align-items: center;
   text-align: center;
 }
+
+/* Mobile Styles */
+@media (max-width: 767px) {
+  .container {
+    max-width: 90vw;
+    padding: 10px 0;
+  }
+  .feedback-form h2{
+    margin-left: 0;
+    font-size: 20px;
+  }
+  .email-phone{
+    display: block;
+  }
+
+  .form-group-email,
+  .form-group-phone {
+    width: 100%;
+    display: block;
+  }
+
+  .feedback-form .radio-group {
+    width: 100%;
+    margin: 10px 0;
+  }
+}

@@ -40,14 +40,14 @@ const FeedbackForm = () => {
   const validateForm = () => {
     let errors = {};
 
-    //Field Validations
+    // Field Validations
     if (!formData.customerName) errors.customerName = 'Customer name is required';
     if (!formData.email) errors.email = 'Email is required';
     else if (!/\S+@\S+\.\S+/.test(formData.email)) errors.email = 'Invalid email address';
     if (!formData.phone) errors.phone = 'Phone number is required';
     else if (!isValidPhoneNumber(formData.phone)) errors.phone = 'Invalid phone number';
 
-    // // Validate Radio buttons
+    //  Validate Radio buttons
     if (formData.serviceQuality === null) errors.serviceQuality = 'Please rate the service quality';
     if (formData.beverageQuality === null) errors.beverageQuality = 'Please rate the beverage quality';
     if (formData.cleanliness === null) errors.cleanliness = 'Please rate the cleanliness';
@@ -75,7 +75,7 @@ const FeedbackForm = () => {
   const handleAnimationComplete = () => {
     setTimeout(() => {
       window.location.reload();
-    }, 5000);
+    }, 3000);
   };
   //animation options
   const defaultOptions = {
@@ -90,9 +90,10 @@ const FeedbackForm = () => {
     <div className="container">
       {isFormSubmitted ? (
         <><Lottie
+          style={{marginTop: '100px'}}
           options={defaultOptions}
-          height={400}
-          width={400}
+          height={300}
+          width={300}
         />
         <h1 className='success-submit-header'>Thank you, {formData.customerName} for completing the information &#10084;</h1>
         {handleAnimationComplete()}
