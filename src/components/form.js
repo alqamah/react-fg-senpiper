@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import './form.css'
 import Lottie from 'react-lottie';
 import animationData from '../assets/lotties/success-animation.json';
+import 'react-phone-number-input/style.css'
+import PhoneInput, {isValidPhoneNumber} from 'react-phone-number-input'
+
 
 const FeedbackForm = () => {
   const [formData, setFormData] = useState({
@@ -34,18 +37,18 @@ const FeedbackForm = () => {
   const validateForm = () => {
     let errors = {};
 
-    // Validate required fields
-    // if (!formData.customerName) errors.customerName = 'Customer name is required';
-    // if (!formData.email) errors.email = 'Email is required';
-    // else if (!/\S+@\S+\.\S+/.test(formData.email)) errors.email = 'Invalid email address';
-    // if (!formData.phone) errors.phone = 'Phone number is required';
-    // else if (!/^\d{10}$/.test(formData.phone)) errors.phone = 'Invalid phone number';
+    //Field Validations
+    if (!formData.customerName) errors.customerName = 'Customer name is required';
+    if (!formData.email) errors.email = 'Email is required';
+    else if (!/\S+@\S+\.\S+/.test(formData.email)) errors.email = 'Invalid email address';
+    if (!formData.phone) errors.phone = 'Phone number is required';
+    else if (!isValidPhoneNumber(formData.phone)) errors.phone = 'Invalid phone number';
 
-    // // Validate radio buttons
-    // if (formData.serviceQuality === null) errors.serviceQuality = 'Please rate the service quality';
-    // if (formData.beverageQuality === null) errors.beverageQuality = 'Please rate the beverage quality';
-    // if (formData.cleanliness === null) errors.cleanliness = 'Please rate the cleanliness';
-    // if (formData.diningExperience === null) errors.diningExperience = 'Please rate the dining experience';
+    // Validate Radio buttons
+    if (formData.serviceQuality === null) errors.serviceQuality = 'Please rate the service quality';
+    if (formData.beverageQuality === null) errors.beverageQuality = 'Please rate the beverage quality';
+    if (formData.cleanliness === null) errors.cleanliness = 'Please rate the cleanliness';
+    if (formData.diningExperience === null) errors.diningExperience = 'Please rate the dining experience';
 
     return errors;
   };
@@ -58,10 +61,14 @@ const FeedbackForm = () => {
       const feedback = JSON.parse(localStorage.getItem('feedback') || '[]');
       feedback.push(formData);
       localStorage.setItem('feedback', JSON.stringify(feedback));
-
-      //console.log(feedback);
-
-      // Reset form data
+      console.log(feedback);
+      setIsFormSubmitted(true);
+    } else {
+      setFormErrors(errors);
+    }
+  };
+  const handleAnimationComplete = () => {
+    setTimeout(() => {
       setFormData({
         customerName: '',
         email: '',
@@ -71,15 +78,9 @@ const FeedbackForm = () => {
         cleanliness: null,
         diningExperience: null,
       });
-
-      setIsFormSubmitted(true);
-    } else {
-      setFormErrors(errors);
-    }
+      setIsFormSubmitted(false);
+    }, 3000);
   };
-  // const handleAnimationComplete = () => {
-  //   setIsFormSubmitted(false);
-  // };
   const defaultOptions = {
     loop: true,
     autoplay: true,
@@ -96,13 +97,14 @@ const FeedbackForm = () => {
           height={400}
           width={400}
         />
-        <h1 className='success-submit-header'>Thanks! for your valuable feedback &#10084;</h1>
+        <h1 className='success-submit-header'>Thanks {formData.customerName}! for your valuable feedback &#10084;</h1>
+        {handleAnimationComplete()}
         </>
       ):
       <div className="feedback-form">
         <h2>Feedback Form</h2>
         <p>
-         Your feedback is important to improve our services. Please fill out the form below.
+         Please fill this form, to help us serve you better.
         </p>
         <form onSubmit={handleSubmit}>
           <div className='form-group form-group-name'>
@@ -116,15 +118,23 @@ const FeedbackForm = () => {
             />
             {formErrors.customerName && <span className="error">{formErrors.customerName}</span>}
           </div>
-          <div className='form-group form-group-email'>
-            <label className='form-label-title' htmlFor="email">Email:</label>
-            <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} />
-            {formErrors.email && <span className="error">{formErrors.email}</span>}
-          </div>
-          <div className='form-group form-group-phone'>
-            <label className='form-label-title' htmlFor="phone">Phone:</label>
-            <input type="tel" id="phone" name="phone" value={formData.phone} onChange={handleChange} />
-            {formErrors.phone && <span className="error">{formErrors.phone}</span>}
+          <div className='email-phone'>
+            <div className='form-group form-group-email'>
+              <label className='form-label-title' htmlFor="email">Email:</label>
+              <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} />
+              {formErrors.email && <span className="error">{formErrors.email}</span>}
+            </div>
+            <div className='form-group form-group-phone'>
+              <label className='form-label-title' htmlFor="phone">Phone:</label>
+              <PhoneInput
+                type="tel" id="phone" name="phone"
+                defaultCountry="IN"
+                initialValueFormat="national"
+                value={formData.phone}
+                onChange={(value) => handleChange({ target: { name: 'phone', value } })}
+              />
+              {formErrors.phone && <span className="error">{formErrors.phone}</span>}
+            </div>
           </div>
           <div className='form-group rating-group'>
             <div className="radio-group service-quality">

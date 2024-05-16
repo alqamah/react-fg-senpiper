@@ -20,7 +20,24 @@ body{
   font-weight: 700;
   font-style: normal;
   font-size: 50px;
-  margin-left: 10%;
+  margin-left: 5%;
+}
+#line{
+  height: 2px;
+  background: linear-gradient(90deg,white, grey, white);
+  width: 35%;
+  margin-left: 25px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#line img{
+  margin-bottom: 0px;
+  background-color: white;
+  right: 0;
+  height: 40px;
+  width: 40px;
 }
 .feedback-header .header img{
   height: 100px;

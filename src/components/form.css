@@ -33,6 +33,11 @@ body {
   font-family: "Arvo", serif; 
   font-weight: 400;
 }
+.feedback-form p {
+  margin-bottom: 20px;
+  line-height: 1.5;
+  color: #333;
+}
 
 .feedback-form label {
   display: block;
@@ -49,13 +54,15 @@ body {
 }
 .form-group-email,
 .form-group-phone {
-  width: 48%;
+  width: 40%;
   display: inline-block;
-  margin-right: 4%;
 }
 
-.form-group-phone {
-  margin-right: 0;
+.email-phone{
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid rgb(255, 255, 255);
+  padding: 10px;
 }
 
 .feedback-form input[type="text"],
@@ -122,4 +129,5 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
