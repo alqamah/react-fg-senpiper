@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './form.css'
+import Lottie from 'react-lottie';
+import animationData from '../assets/lotties/success-animation.json';
 
 const FeedbackForm = () => {
   const [formData, setFormData] = useState({
@@ -11,7 +13,7 @@ const FeedbackForm = () => {
     cleanliness: null,
     diningExperience: null,
   });
-
+  const [isFormSubmitted, setIsFormSubmitted] = useState(false);
   const [formErrors, setFormErrors] = useState({});
 
   const handleChange = (e) => {
@@ -57,7 +59,7 @@ const FeedbackForm = () => {
       feedback.push(formData);
       localStorage.setItem('feedback', JSON.stringify(feedback));
 
-      console.log(feedback);
+      //console.log(feedback);
 
       // Reset form data
       setFormData({
@@ -70,15 +72,33 @@ const FeedbackForm = () => {
         diningExperience: null,
       });
 
-      // Display success message
-      alert('Thank you for completing the information');
+      setIsFormSubmitted(true);
     } else {
       setFormErrors(errors);
     }
   };
-
+  // const handleAnimationComplete = () => {
+  //   setIsFormSubmitted(false);
+  // };
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: animationData,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice"
+    }
+  };
   return (
     <div className="container">
+      {isFormSubmitted ? (
+        <><Lottie
+          options={defaultOptions}
+          height={400}
+          width={400}
+        />
+        <h1 className='success-submit-header'>Thanks! for your valuable feedback &#10084;</h1>
+        </>
+      ):
       <div className="feedback-form">
         <h2>Feedback Form</h2>
         <p>
@@ -301,8 +321,9 @@ const FeedbackForm = () => {
             </div>
           </div>
           <button type="submit">Submit Feedback</button>
-        </form>
+        </form>  
       </div>
+      }
     </div>
   );
 };

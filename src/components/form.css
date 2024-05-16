@@ -117,3 +117,9 @@ body {
   font-size: 0.8em;
   margin-top: 5px;
 }
+
+.success-submit-header{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
