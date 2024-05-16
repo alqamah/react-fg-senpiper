@@ -80,22 +80,28 @@ body {
 }
 
 .feedback-list th {
-  background-color: rgba(34, 28, 11, 0.497);
+  background-color: rgba(1, 101, 107, 0.497);
   color: white;
   font-family: "Arvo", serif;
   font-weight: 400;
-  border: solid 1px rgb(38, 38, 38);
+  border: solid 2px rgb(135, 189, 159);
   position: sticky; 
   top: 0; 
   z-index: 1;
 }
 
 .feedback-list tr:nth-child(even) {
-  background-color: #f9f9f9;
+  background-color: rgb(236, 255, 245);
 }
-
+.feedback-list tr:nth-child(odd) {
+  background-color: rgb(236, 243, 255);
+}
+.feedback-list tr{
+  transition: .2s;
+  cursor: pointer;
+}
 .feedback-list tr:hover {
-  background-color: #e6e6e6;
+  background-color: #ffffff;
 }
 
 .delete-btn {

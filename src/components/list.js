@@ -76,7 +76,6 @@ const FeedbackList = () => {
       </div>
       <p>
         {feedbackData.length} record{feedbackData.length !== 1 && 's'} found.{' '}
-        {feedbackData.length > 0 && feedbackData.length === 12 && '(Filters applied)'}
       </p>
       <div className="selected-records-actions">
         <button onClick={handleDelete} className="delete-btn" disabled={selectedRecords.length === 0}>
@@ -98,7 +97,7 @@ const FeedbackList = () => {
         </thead>  
         <tbody>
           {feedbackData.map((feedback, index) => (
-            <tr key={index}>
+            <tr key={index} onClick={() => handleRecordSelection(index)}>
               <td>
                 <input
                   type="checkbox"
