@@ -69,17 +69,18 @@ const FeedbackForm = () => {
   };
   const handleAnimationComplete = () => {
     setTimeout(() => {
-      setFormData({
-        customerName: '',
-        email: '',
-        phone: '',
-        serviceQuality: null,
-        beverageQuality: null,
-        cleanliness: null,
-        diningExperience: null,
-      });
-      setIsFormSubmitted(false);
-    }, 3000);
+      // setFormData({
+      //   customerName: '',
+      //   email: '',
+      //   phone: '',
+      //   serviceQuality: null,
+      //   beverageQuality: null,
+      //   cleanliness: null,
+      //   diningExperience: null,
+      // });
+      // setIsFormSubmitted(false);
+      window.location.reload();
+    }, 5000);
   };
   const defaultOptions = {
     loop: true,
