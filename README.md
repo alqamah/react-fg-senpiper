@@ -1,5 +1,5 @@
 # F&G: Feedback and Grievance System
-# Live Link: https://react-fg-senpiper-1.onrender.com
+## Live Link: https://react-fg-senpiper-1.onrender.com
 
 This project is a feedback and grievance system for a restaurant called "Aromatic Bar". It has two tabs: one for submitting feedback and another for viewing all submissions.
 
@@ -18,8 +18,6 @@ The application should now be running at `http://localhost:3000`.
 
 ### Feedback Form
 
-- Form name: Aromatic Bar
-- Form description: "We are committed to providing you with the best dining experience possible, so we welcome your comments. Please fill out this questionnaire. Thank you."
 - Required fields:
   - Customer Name
   - Email
@@ -45,3 +43,17 @@ The application should now be running at `http://localhost:3000`.
 - Displays a list of all submissions from the browser storage.
 - Includes a detailed view of each submission, showing all fields filled in the form.
 - Data persists even after reloading the page.
+- Search functionality to filter the table.
+- Page automatically refreshes when a new record is added via the form (using states).
+- Button available to manually refresh the page.  
+- Table headers stick to top when scrolling.
+
+### Responsiveness
+
+- responsive for mobile view
+- responsive for tablet view
+
+### Animations
+
+- added custom animation on form-submit
+- custom animation on page-header

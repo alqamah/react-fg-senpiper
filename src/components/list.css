@@ -140,3 +140,12 @@ body {
     margin: 5px;
   }
 }
+
+/*Tablet Style*/
+@media (min-width: 768px) and (max-width: 1024px) {
+  .feedback-list {
+    width: 100vw;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
