@@ -4,6 +4,8 @@ body{
   display: flex;
   flex-direction: column;
   min-width: 750px;
+  font-family: "Nunito", sans-serif;
+  font-weight: 500;
 }
 .feedback-header{
   height: 150px;
@@ -27,7 +29,7 @@ body{
   border-radius: 25%;
 }
 .tabs {
-  margin-top: -100px;
+  margin-top: -110px;
   position: sticky;
   top: 0;
   z-index: 1;
@@ -36,10 +38,19 @@ body{
 }
 
 .tabs button{
-  background-color: #f2f2f2;
-  border: none;
-  border-radius: 5px;
+  background-color: #f3f3f3;
+  font-size: 1.2rem;
+  box-shadow: 5px 5px 10px #88888867;
+  font-family: "Arvo", serif; 
+  font-weight: 400;
+  border: solid 5px white;
+  border-radius: 10px;
   padding: 10px 20px;
   margin-right: 10px;
   cursor: pointer;
+  transition: .2s;
+}
+.tabs button:hover{
+  background-color: #5A5247;
+  color: white;
 }

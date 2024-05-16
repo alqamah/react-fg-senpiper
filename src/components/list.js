@@ -19,8 +19,7 @@ const FeedbackList = () => {
   return (
     <div className="feedback-list">
       <div className="header">
-        <h2>Aromatic Bar</h2>
-        <button>Add New</button>
+        <h2>Feedback Records</h2>
       </div>
       <p>
         {feedbackData.length} record{feedbackData.length !== 1 && 's'} found.{' '}

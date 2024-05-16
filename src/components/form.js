@@ -82,11 +82,11 @@ const FeedbackForm = () => {
       <div className="feedback-form">
         <h2>Feedback Form</h2>
         <p>
-         ...
+         Your feedback is important to improve our services. Please fill out the form below.
         </p>
         <form onSubmit={handleSubmit}>
           <div className='form-group form-group-name'>
-            <label htmlFor="customerName">Customer Name:</label>
+            <label className='form-label-title' htmlFor="customerName">Customer Name:</label>
             <input
               type="text"
               id="customerName"
@@ -97,19 +97,19 @@ const FeedbackForm = () => {
             {formErrors.customerName && <span className="error">{formErrors.customerName}</span>}
           </div>
           <div className='form-group form-group-email'>
-            <label htmlFor="email">Email:</label>
+            <label className='form-label-title' htmlFor="email">Email:</label>
             <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} />
             {formErrors.email && <span className="error">{formErrors.email}</span>}
           </div>
           <div className='form-group form-group-phone'>
-            <label htmlFor="phone">Phone:</label>
+            <label className='form-label-title' htmlFor="phone">Phone:</label>
             <input type="tel" id="phone" name="phone" value={formData.phone} onChange={handleChange} />
             {formErrors.phone && <span className="error">{formErrors.phone}</span>}
           </div>
           <div className='form-group rating-group'>
             <div className="radio-group service-quality">
               <div>
-                <label>Please rate the quality of the service you received from the host</label>
+                <label className='form-label-title'>Please rate the quality of the service you received from the host</label>
                 <div className='rating-options'>
                   <label>
                     <input
@@ -157,7 +157,7 @@ const FeedbackForm = () => {
             </div>
             <div className="radio-group cleanliness">
               <div>
-                <label>Was our restaurant clean?</label>
+                <label className='form-label-title'>Was our restaurant clean?</label>
                 <div className='rating-options'>
                   <label>
                     <input
@@ -205,7 +205,7 @@ const FeedbackForm = () => {
             </div>
             <div className="radio-group beverage-quality">
               <div>
-                <label>Please rate the quality of your beverage.</label>
+                <label className='form-label-title'>Please rate the quality of your beverage.</label>
                 <div className='rating-options'>
                   <label>
                     <input
@@ -253,7 +253,7 @@ const FeedbackForm = () => {
             </div>
             <div className="radio-group overall-experience">
               <div>
-                <label>Please rate your overall dining experience</label>
+                <label className='form-label-title'>Please rate your overall dining experience</label>
                 <div className='rating-options'>
                   <label>
                     <input
